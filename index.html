@@ -64,10 +64,27 @@
 
 <div id="quotes"></div>
 
-<video controls autoplay loop width="600">
+<!-- Video will play after clicking button -->
+<video id="loveVideo" width="600" loop>
   <source src="https://youtu.be/BQE2hrC_gFo?si=SsjbXouW_4XkSP7R" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+<br>
+<button id="playButton" style="font-size:20px; padding:10px 20px; margin-top:20px; border-radius:10px; background:#ff5c9e; color:white; border:none; cursor:pointer;">
+  Click to Play My Song ❤️
+</button>
+
+<script>
+  const video = document.getElementById('loveVideo');
+  const button = document.getElementById('playButton');
+
+  button.addEventListener('click', () => {
+    video.play();           // Start video with sound
+    button.style.display = 'none'; // Hide button after click
+  });
+</script>
+
 
 <script>
   // Generate 1000 Sorry messages with Tamil + English
@@ -111,3 +128,4 @@
 
 </body>
 </html>
+
