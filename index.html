@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1000 Sorry Shubna ❤️</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fff0f6, #ffe6f0);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    text-align: center;
+  }
+  h1 {
+    color: #ff2d6f;
+    font-size: 3em;
+    margin: 20px;
+    animation: glow 1.5s infinite alternate;
+  }
+  @keyframes glow {
+    from {text-shadow: 0 0 5px #ff5c9e;}
+    to {text-shadow: 0 0 20px #ff2d6f;}
+  }
+  p {
+    font-size: 1.5em;
+    color: #ff5c9e;
+    margin: 10px 0;
+  }
+  video {
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #ff9ac1;
+  }
+  /* Heart Animation */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: floatUp linear infinite;
+  }
+  .heart:before, .heart:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart:before { top: -10px; left: 0; }
+  .heart:after { left: 10px; top: 0; }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(45deg); opacity: 1;}
+    100% { transform: translateY(-1000px) rotate(45deg); opacity: 0;}
+  }
+</style>
+</head>
+<body>
+
+<h1>1000 Sorry Shubna ❤️</h1>
+
+<div id="quotes"></div>
+
+<video controls autoplay loop width="600">
+  <source src="https://youtu.be/BQE2hrC_gFo?si=SsjbXouW_4XkSP7R" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<script>
+  // Generate 1000 Sorry messages with Tamil + English
+  const baseMessages = [
+    "Shubu, I love you ❤️",
+    "நான் உன்னை மிகவும் நேசிக்கிறேன் 💖",
+    "I am really sorry 😢",
+    "எப்போதும் மன்னிப்பு வேண்டும் 😢",
+    "Forever yours, my love 🌹",
+    "Shakkir’s heart belongs to you 💕",
+    "I promise to make it up to you 💖",
+    "உன்னை நினைத்து என் மனம் பொங்குகிறது 💞"
+  ];
+
+  const messages = [];
+  for(let i=0;i<125;i++){ // 8*125 = 1000 messages approx
+    baseMessages.forEach(msg => messages.push(msg + " #Sorry" + (i+1)));
+  }
+
+  const quotesDiv = document.getElementById('quotes');
+  let i = 0;
+
+  function showQuote() {
+    quotesDiv.innerHTML = `<p>${messages[i]}</p>`;
+    i = (i + 1) % messages.length;
+    setTimeout(showQuote, 1000); // 1 sec per message
+  }
+  showQuote();
+
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
