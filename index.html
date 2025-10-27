@@ -28,11 +28,6 @@
     color: #ff5c9e;
     margin: 10px 0;
   }
-  video {
-    margin-top: 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px #ff9ac1;
-  }
   /* Heart Animation */
   .heart {
     position: absolute;
@@ -56,6 +51,21 @@
     0% { transform: translateY(0) rotate(45deg); opacity: 1;}
     100% { transform: translateY(-1000px) rotate(45deg); opacity: 0;}
   }
+  #youtubeContainer {
+    margin-top: 30px;
+    position: relative;
+    display: inline-block;
+  }
+  #playButton {
+    font-size:20px; 
+    padding:10px 20px; 
+    margin-top:20px; 
+    border-radius:10px; 
+    background:#ff5c9e; 
+    color:white; 
+    border:none; 
+    cursor:pointer;
+  }
 </style>
 </head>
 <body>
@@ -64,30 +74,16 @@
 
 <div id="quotes"></div>
 
-<!-- Video will play after clicking button -->
-<video id="loveVideo" width="600" loop>
-  <source src="<iframe width="560" height="315" src="https://www.youtube.com/embed/BQE2hrC_gFo?si=dpm4E6kmbopzxz5n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+<div id="youtubeContainer">
+  <iframe id="youtubeVideo" width="560" height="315" src="" 
+          frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen></iframe>
+</div>
 <br>
-<button id="playButton" style="font-size:20px; padding:10px 20px; margin-top:20px; border-radius:10px; background:#ff5c9e; color:white; border:none; cursor:pointer;">
-  Click to Play My Song ❤️
-</button>
+<button id="playButton">Click to Play My Song ❤️</button>
 
 <script>
-  const video = document.getElementById('loveVideo');
-  const button = document.getElementById('playButton');
-
-  button.addEventListener('click', () => {
-    video.play();           // Start video with sound
-    button.style.display = 'none'; // Hide button after click
-  });
-</script>
-
-
-<script>
-  // Generate 1000 Sorry messages with Tamil + English
+  // Generate 1000 Sorry + Love Messages
   const baseMessages = [
     "Shubu, I love you ❤️",
     "நான் உன்னை மிகவும் நேசிக்கிறேன் 💖",
@@ -98,19 +94,17 @@
     "I promise to make it up to you 💖",
     "உன்னை நினைத்து என் மனம் பொங்குகிறது 💞"
   ];
-
   const messages = [];
-  for(let i=0;i<125;i++){ // 8*125 = 1000 messages approx
+  for(let i=0;i<125;i++){
     baseMessages.forEach(msg => messages.push(msg + " #Sorry" + (i+1)));
   }
 
   const quotesDiv = document.getElementById('quotes');
   let i = 0;
-
   function showQuote() {
     quotesDiv.innerHTML = `<p>${messages[i]}</p>`;
     i = (i + 1) % messages.length;
-    setTimeout(showQuote, 1000); // 1 sec per message
+    setTimeout(showQuote, 1000); // 1 second per message
   }
   showQuote();
 
@@ -124,9 +118,15 @@
     setTimeout(() => heart.remove(), 6000);
   }
   setInterval(createHeart, 400);
+
+  // YouTube play button
+  const playButton = document.getElementById('playButton');
+  const youtubeVideo = document.getElementById('youtubeVideo');
+  playButton.addEventListener('click', () => {
+    youtubeVideo.src = "https://www.youtube.com/embed/BQE2hrC_gFo?autoplay=1&rel=0&si=dpm4E6kmbopzxz5n"; // your embed link
+    playButton.style.display = 'none';
+  });
 </script>
 
 </body>
 </html>
-
-
